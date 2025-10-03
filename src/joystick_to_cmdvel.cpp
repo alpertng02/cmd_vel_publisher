@@ -104,6 +104,10 @@ private:
     }
 
     void init_parameters() {
+
+        joy_topic = this->declare_parameter("joy_topic", joy_topic);
+        cmd_vel_topic = this->declare_parameter("cmd_vel_topic", cmd_vel_topic),
+
         linear_x_axis = this->declare_parameter("linear_x_joy_axis", linear_x_axis);
         angular_z_axis = this->declare_parameter("angular_z_joy_axis", angular_z_axis);
 

@@ -1,5 +1,9 @@
 joystick_to_cmdvel:
   ros__parameters:
+
+    joy_topic: '/joy'
+    cmd_vel_topic: '/cmd_vel'
+
     linear_x_joy_axis: 1
     angular_z_joy_axis: 0
     throttle_joy_axis: 5

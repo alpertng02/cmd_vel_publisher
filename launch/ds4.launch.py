@@ -19,6 +19,8 @@ def generate_launch_description():
 
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
+    launch_joy = LaunchConfiguration('launch_joy')
+
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory(package_name))
@@ -31,6 +33,15 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': use_sim_time}, os.path.join(pkg_path, 'config', 'ds4_config.yaml')],
     )
+    
+    joy = Node(
+            condition=IfCondition(launch_joy),
+            package='joy',
+            executable='joy_node',
+            name='joy',
+            output='screen',
+            parameters=[{'use_sim_time': use_sim_time}],
+    )
 
     # Launch!
     return LaunchDescription([
@@ -38,6 +49,11 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
-
+        DeclareLaunchArgument(
+            'launch_joy',
+            default_value='false',
+            description='Whether to launch joy_node'
+        ),
         ds4_cmd_vel,
+        joy,
     ])
