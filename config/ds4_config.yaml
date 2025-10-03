@@ -1,0 +1,15 @@
+joystick_to_cmdvel:
+  ros__parameters:
+    linear_x_joy_axis: 1
+    angular_z_joy_axis: 0
+    throttle_joy_axis: 5
+
+    joy_enable_button: 4
+    turbo_enable_button: 5
+
+    maximum_linear_x_velocity: 2.0
+    maximum_angular_z_velocity: 2.0
+
+    cmd_vel_publish_rate: 100.0
+
+    joy_timeout: 0.5
